@@ -4,7 +4,7 @@ import heapq #used for adj. list interp of graph
 class AdjMatGraph():
     def __init__(self, vertices):
         self.V = vertices
-        self.graph = [[0 for c in range(vertices)] for r in range(vertices)]
+        self.graph = [[[0 for _ in range(vertices)] for _ in range(vertices)]]
 
     def printSolution(self, dist, src):
         for node in range(self.V):
@@ -29,7 +29,7 @@ class AdjMatGraph():
         dist[src] = 0
         sptSet = [False] * self.V
 
-        for repeats in range(self.V):
+        for _ in range(self.V):
 
             # remove min dist vertex to source from set of vertices to be processed
             # x is always equal to src in iter 1
@@ -48,7 +48,7 @@ class AdjMatGraph():
 class AdjListGraph():
     def __init__(self, V):
         self.V = V
-        self.adj = [[] for node in range(V)]
+        self.adj = [[]] * V
     
     def addEdge(self, n1, n2, d):
         self.adj[n1].append((n2,d))
