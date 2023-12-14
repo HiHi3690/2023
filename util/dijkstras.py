@@ -2,9 +2,9 @@ import sys #used for int_max
 import heapq #used for adj. list interp of graph
 
 class AdjMatGraph():
-    def __init__(self, verticies):
-        self.V = verticies
-        self.graph = [[0 for c in range(verticies)] for r in range(verticies)]
+    def __init__(self, vertices):
+        self.V = vertices
+        self.graph = [[0 for c in range(vertices)] for r in range(vertices)]
 
     def printSolution(self, dist, src):
         for node in range(self.V):
@@ -31,14 +31,14 @@ class AdjMatGraph():
 
         for repeats in range(self.V):
 
-            # remove min dist vertex to source from set of verticies to be processed
+            # remove min dist vertex to source from set of vertices to be processed
             # x is always equal to src in iter 1
             x = self.minDistance(dist, sptSet)
 
             # put min dist vert in SPT
             sptSet[x] = True
 
-            # update dist val of adj verticies to new vertex if current distance > new distance and the adj vertex y is not already in SPT
+            # update dist val of adj vertices to new vertex if current distance > new distance and the adj vertex y is not already in SPT
             for y in range(self.V):
                 if self.graph[x][y] > 0 and sptSet[y] == False and dist[y] > dist[x] + self.graph[x][y]:
                     dist[y] = dist[x] + self.graph[x][y]
@@ -54,10 +54,10 @@ class AdjListGraph():
         self.adj[n1].append((n2,d))
         self.adj[n2].append((n1,d))
 
-    # Prints shortest dist from src to all verticies
+    # Prints shortest dist from src to all vertices
     def shortestPath(self, src):
 
-        # Create priority queue pq to store processing verticies
+        # Create priority queue pq to store processing vertices
         pq = []
         heapq.heappush(pq, (0, src))
 
