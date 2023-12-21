@@ -37,7 +37,30 @@ def step(barriers):
 
     return cout
 
-#d1
-for t in range(1,64):
+# #d1
+# for t in range(1,64):
+#     circles = step(rocks)
+# print("s1", len(circles))
+
+dp = []
+
+for t in range(1,65+131*2):
     circles = step(rocks)
-print(len(circles))
+    if t == 63:
+        print("s1", len(circles))
+    if t in [64, 195, 326]:
+        dp.append(len(circles))
+
+def lagrangeIterp(values):
+    a = values[0] / 2 - values[1] + values[2] / 2 
+    b = -3 * (values[0] /  2) + 2 * values[1] - values[2] / 2
+    c = values[0]
+    return a, b, c
+
+#d2
+def f(x):
+    a, b, c = lagrangeIterp(dp)
+    return int(a*x*x + b*x + c) 
+
+x = 26501365 // 131 #202300
+print("s2", f(x))
