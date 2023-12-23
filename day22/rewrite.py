@@ -83,7 +83,6 @@ class Graph():
                 for x,ch in enumerate(line):
                     self.graph[0][y][x] = -1
     
-    #get min/max size of graph
     def update_size(self, bricks: dict[id: Brick]):
         xm = 0
         ym = 0
@@ -136,7 +135,6 @@ class Graph():
                     self.bricks.update({id: brick})
 
     def gravity(self):
-        # print(self.get_size())
         gout = Graph(self.get_size())
         seen = set()
         seen.add(0)
@@ -150,7 +148,6 @@ class Graph():
 
                     s, e = self.bricks[id].get_bounds()
                     brick = Brick(s, e, id)
-                    # brick = self.bricks[id]
                     under = brick.get_under()
                     checker = [1 for i in under if gout.get_item_at_point(*i) == 0]
                     if len(checker) != brick.get_footprint():
@@ -186,7 +183,6 @@ class Graph():
     def equals(self, other):
         return self.graph == other.graph
 
-#turn bricks from lists to dict of brick objects
 for pos,i in enumerate(bricks):
     bricks[pos] = Brick(i[0], i[1], pos+1)
 bricks = {b.get_id():b for b in bricks}
