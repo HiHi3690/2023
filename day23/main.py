@@ -1,6 +1,5 @@
 from collections import deque
 from timeit import default_timer
-from queue import PriorityQueue
 start = default_timer()
 
 input = [list(x) for x in open("data.txt").read().split("\n")]
