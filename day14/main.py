@@ -1,5 +1,7 @@
 #Note: very slow/unoptimal, I don't care
+from timeit import default_timer
 
+start = default_timer()
 input = [list(x) for x in open("data.txt").read().split("\n")]
 
 def north(data):
@@ -50,8 +52,9 @@ for i,line in enumerate(input):
         if c == "O":
             total += len(input) - i
 
-print("s2:", total)
+print("s1:", total, "Time:", default_timer() - start)
 
+start = default_timer()
 DP = {}
 
 count = 1000000000
@@ -75,4 +78,4 @@ for i,line in enumerate(input):
         if c == "O":
             total += len(input) - i
 
-print("s2:", total)
+print("s2:", total, "Time:", default_timer() - start)

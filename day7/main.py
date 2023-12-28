@@ -79,4 +79,3 @@ for i in range(len(numbers)):
     # print(stakes[ranking[numbers[i]]], ranking[numbers[i]], numbers[i], i+1)
 
 print(fullout)
-print(245576185-fullout)
